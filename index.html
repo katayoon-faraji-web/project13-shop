@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="icon/bootstrap-icons.min.css">
+    <style>
+        /* :root {
+            --text-wdth: 900;
+            --text-wght: 400;
+            --text-wdthh: 0;
+            --text-wghth: 750;
+            --text-wdthhh: 700;
+       
+        } */
+
+      
+        .br{
+            border-right: 1px solid white;
+        }
+        
+        body , header{
+            --text-wdth : 900;
+            --text-wght: 400;
+            -webkit-font-smoothing: antialiased!important;
+            -moz-osx-font-smoothing: grayscale!important;
+            font-variation-settings: 'wght' var(--text-wght), 'wdth' var(--text-wdth);
+            font-stretch: ultra-expanded;
+            font-size: 20px;
+            line-height: 26px;
+            font-weight: 400;
+
+        }
+        #txt{
+            --text-wdth: 0;
+            --text-wght: 400;
+            font-variation-settings: 'wght' var(--text-wght), 'wdth' var(--text-wdth);
+            font-stretch: extra-condensed;
+            white-space: nowrap;
+        }
+        .btn{
+            --text-wdth: 900;
+            --text-wght: 750;
+            font-variation-settings: 'wght' var(--text-wght), 'wdth' var(--text-wdth);
+        }
+        .thermal{
+            --text-wght:500;
+            --text-wdth:900;
+            --text-opsz :900;
+            font-variation-settings: 'wght' var(--text-wght), 'wdth' var(--text-wdth), 'opsz' var(--text-opsz);
+        }
+        .li_in_buying_options_and_card{
+            width: 48%;
+            height: 40px;
+            border-bottom: 1px solid gray;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            padding: 4px;
+            text-transform: capitalize;
+            @media only screen and (max-width: 768px) {
+ 
+                width: 100%;
+            
+            }
+        }
+        
+        .box , .box2{
+            width: 10px;
+            height: 10px;
+            border: 1px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: .5s;
+            &:hover{
+                transform: scale(1.2);
+            }
+            
+
+        }
+        .box{
+            background-color: transparent;
+        }
+        .box2{
+            background-color: black;
+        }
+       
+        
+    </style>
+</head>
+<body class="font-reactor">
+    <main id="_main" class="w-[100%] h-[100vh] overflow-y-scroll overflow-x-hidden">
+        <section id="whole" class="w-full bg-black relative h-[12000px]">
+            <!-- first sec -->
+            <!-- card -->
+            <div id="card" class="fixed w-full lg:w-[70%] h-[100vh]  bg-white text-black flex flex-wrap justify-center content-center  top-0 -right-[1200px] z-50 transition-all duration-500">
+                <div class="w-full h-[80%] overflow-y-scroll lg:p-20 p-4 flex flex-wrap justify-center content-start">
+                    <div class="w-[90%] flex justify-between items-center">
+                        <span class="text-[20px] lg:text-[30px] text-start text-black">Card</span>
+                        <i id="close_card_btn" class="bi bi-x-lg text-black text-[30px] cursor-pointer"></i>
+                    </div>
+                    
+                    <ul id="all_sell_box" class="w-[90%] flex flex-wrap justify-between content-start mt-10 text-[15px] lg:text-[20px]  ">
+                        
+                        <!-- <li class="w-[42%] h-[40px] border-b-2 border-gray-700 flex justify-between items-center p-2">
+                            <span class="type text-[15px] text-black text-start">family</span>
+                            <span class="price text-[12px] text-black text-end">type</span>
+                            <span class="price text-[12px] text-black text-end">price</span>
+                        </li> -->
+                    </ul>
+                </div>
+                <div class="w-[90%] flex justify-between items-center border-t-2 border-black px-4 lg:px-20 ">
+                    <span id="wholeprice" class="text-[15px] text-black text-start mt-4">USD$0</span>
+                    <button id="pay_btn" class="w-[150px] h-[40px] text-[12px] text-white mt-4 bg-black rounded-lg cursor-pointer hover:bg-gray-700 transition-all duration-500">checkout</button>
+                </div>
+            </div>
+            <!-- end card -->
+            <!-- buying options -->
+            <div id="buying_options" class="fixed w-full lg:w-[70%] h-[100vh]  bg-white text-black flex flex-wrap justify-center content-center  top-0 -right-[1200px] z-50 transition-all duration-500 ">
+                <div class="w-full p-4 lg:p-20 h-[80%] overflow-y-scroll  flex flex-wrap justify-center content-start">
+                    <div class="w-[90%] flex justify-between items-center">
+                        <span class="text-[30px] text-start text-black">Buying Options</span>
+                        <i id="close_buying_options_btn" class="bi bi-x-lg text-black text-[30px] cursor-pointer"></i>
+                    </div>
+                    <div class="w-[90%]  flex flex-wrap justify-start content-start  my-10 ">
+                        
+                        <strong class="mt-6 font capitalize">RST <strong id="family" class="mt-6 font capitalize">FAMILY</strong> FAMILY</strong>
+                        <ul id="buying_options_ul" class="w-full  flex flex-wrap justify-between content-start mt-4  ">
+                            <!-- <li class="w-[42%] h-[40px] border-b-2 border-gray-700 flex justify-between items-center p-2">
+                                <span class="type text-[15px] text-black text-start">type</span>
+                                <span class="price text-[12px] text-black text-end">price</span>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-[90%] flex justify-end items-center px-4 lg:px-20 border-t-2 border-black mt-4">
+                   
+                    <button id="add_to_card_btn" class="w-[150px] h-[40px] text-[12px] text-white bg-black rounded-md cursor-pointer mt-4 hover:bg-gray-700 transition-all duration-500">Add To Card</button>
+                </div>
+            </div>
+            <!-- end buying options -->
+
+            <section id="first" class="bg-black w-[100%] h-[100vh] flex flex-wrap justify-center content-start">
+                <a href="" class="w-[70px] lg:w-[130px] h-auto fixed lg:top-[200px] top-[150px] left-[100px] lg:left-[320px] z-40">
+                    <img id="cookie" src="img/Cookie-Download-PNG.png" alt="">
+                </a>
+                <header id="header" class="w-full flex justify-between items-center  p-7 fixed z-40 font-third">
+                    <span id="logo" class="w-fit text-white text-[20px] text-start z-50 relative px-1 ">Reset</span>
+                    <ul class="w-[60%]  justify-center items-center hidden lg:flex">
+                        <li class="text-[20px]  text-white hover:text-gray-400 mx-4"><a href="">Home</a></li>
+                        <li  class="text-[20px]  text-white hover:text-gray-400 mx-4"><a href="https://reset-type.com/typefaces">Typefaces</a></li>
+                        <li class="text-[20px]  text-white hover:text-gray-400 mx-4"><a href="https://reset-type.com/typefaces#early-access">Early Access</a></li>
+                        <li class="text-[20px]  text-white hover:text-gray-400 mx-4"><a href="https://reset-type.com/services">Services</a></li>
+                        <li class="text-[20px]  text-white hover:text-gray-400 mx-4"><a href="https://reset-type.com/about">About</a></li>
+                    </ul>
+                    <ul class="w-[35%] lg:w-[15%] flex justify-between items-center relative z-50">
+                        <li id="open_card_btn" class="text-[20px] text-white cursor-pointer  hover:text-gray-400">cart(0)</li>
+                        <li class="mx-4 relative w-[30px] h-[30px] text-white rounded-full  overflow-hidden bg-transparent border-white border-2 xl:block hidden ">
+
+                           <span class="w-[15px] h-full absolute top-0 left-0"></span>
+                            <span class="w-[15px] h-full absolute top-0 right-0 bg-white"></span>
+                        
+                        </li>
+                        <li id="list_btn" class="cursor-pointer "><i class="bi bi-list text-[30px] text-white  hover:text-gray-400"></i></li>
+                    </ul>
+                    <div  id="dropdownmenu" data-state="'closed" class="w-[100%] h-[100vh] absolute top-[0] left-0 flex flex-wrap justify-start  content-center pl-10 lg:pl-52 bg-black z-30 transition-all duration-500 -translate-y-[800px]">
+                        <div class="h-full w-[60%] flex flex-wrap justify-start content-center">
+                            <ul class="w-full flex flex-wrap justify-start content-center mt-4">
+                                <li class="text-[15px] lg:text-[25px]  w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500"><a href="">Typefaces</a></li>
+                                <li class="text-[15px] lg:text-[25px]  w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500 my-2"><a href="">Early Access</a></li>
+                                <li class="text-[15px] lg:text-[25px]  w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500"><a href="">Journal</a></li>
+                            </ul>
+                            <ul class="w-full flex flex-wrap justify-start content-center mb-4 mt-4">
+                                <li class="text-[15px] lg:text-[25px] w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500 my-2"><a href="">About</a></li>
+                                <li class="text-[15px] lg:text-[25px] w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500 my-2"><a href="">Services</a></li>
+                                <li class="text-[15px] lg:text-[25px] w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500 my-2"><a href="">Licenses</a></li>
+                                <li class="text-[15px] lg:text-[25px] w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500 my-2"><a href="">FAQ</a></li>
+                            </ul>
+                            <ul class="w-full flex flex-wrap justify-start content-center mt-8 mb-4">
+                                <li class="text-[15px] lg:text-[25px]  w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500 my-2"><a href="">Terms & Privacy</a></li>
+                                <li class="text-[15px] lg:text-[25px]  w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500 my-2"><a href="">Colophone</a></li>
+                                <li class="text-[15px] lg:text-[25px]  w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500 my-2"><a href="">Contact Me</a></li>
+                            </ul>
+                            <ul class="w-full flex flex-wrap justify-start content-center">
+                                <li class="text-[15px] lg:text-[25px]  w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500 my-2"><a href="">Instagram</a></li>
+                                <li class="text-[15px] lg:text-[25px]  w-full h-[20px] text-start text-white hover:text-gray-400 transition-all duration-500 my-2"><a href="">Twitter</a></li>
+                            </ul>
+                        </div>
+                        <div class="h-full w-[30%] flex justify-center items-center ">
+                            <span id="firstletter" class="text-[200px] lg:text-[400px] text-white transition-all duration-500 font-mazumba"></span>
+                        </div>
+                    </div>
+                </header>
+                <div class="w-full h-[60%] flex justify-start items-center relative p-10 mt-20">
+                    <span id="txt" class="w-fit text-[500px]  leading-[500px] font-bold font-reactor text-white relative"></span>
+                </div>
+
+            </section>
+            <!-- second sec -->
+            <section id="second" class="bg-black w-full flex justify-center content-center flex-wrap mt-[200px] relative">
+                <span contenteditable="true" spellcheck="false" class="w-full text-[70px] md:text-[150px] lg:text-[250px] leading-[150px]  lg:leading-[300px] font-bold font-reactor text-white  flex justify-center">Refresh</span>
+                <button data-cont="reactor" class="btn btn1 w-full text-[10px] pl-10  lg:text-[15px] text-gray-400 text-start lg:pl-28  flex justify-start items-center">EXPLORE RST Reactor <div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center ml-4 bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500">Buying Options</div></button>
+                <img class="absolute -top-[10%] right-[30%] w-[70px] lg:w-[130px]" src="img/Artboard-1-copy-5-6554ca54a455b.png" alt="">
+            </section>
+            <!-- third sec -->
+            <section id="third" class="bg-black w-full  flex flex-wrap justify-center content-center mt-[200px] lg:mt-[400px]">
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:mr-36 lg:rotate-[5deg]">
+                    <img src="img/1.png" alt="">
+                    <button data-cont="reactor" class="btn btn1 w-full text-[15px] text-gray-400 text-start  mt-5">RST Reactor <span class="text-[10px] text-gray-400 ml-20">45 styles(wigth & width)</span><div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500 mt-4">Buying Options</div></button>
+
+                </div>
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:ml-36 mt-10">
+                    <img src="img/2.jpg" alt="">
+                    <button  class="btn w-full text-[15px] text-gray-400 text-start flex flex-wrap justify-start content-center mt-5">Custom Type <span class="text-[10px] text-gray-400  flex justify-start w-full ">Experimental Alphabet For The Studio</span></button>
+                </div>
+            </section>
+            <!-- 4th sec -->
+            <section id="fourth" class="bg-black w-full flex justify-center content-center flex-wrap mt-[200px] relative">
+                <!-- <div class="size_weight w-full flex justify-end items-center ">
+                    <ul class="w-[65%] flex justify-between items-center px-20 ">
+                        <li class="w-[20%] flex justify-center items-center ">
+                            <label class="text-[10px] text-white font-reactor text-start" for="size">SIZE</label>
+                            <div  class="size w-[100px] h-[3px] bg-gray-400 relative cursor-pointer">
+                                <div class="fill_size w-[50px] h-[3px] bg-white absolute top-0 left-0 "></div>
+                            </div>
+                        </li>
+                        <li class="w-[20%] flex justify-center items-center  ">
+                            <label class="text-[10px] text-white font-reactor text-start" for="weight">WEIGHT</label>
+                            <div class="weight w-[100px] h-[3px] bg-gray-400 relative cursor-pointer">
+                                <div class="fill_weight w-[50px] h-[3px] bg-white absolute top-0 left-0 "></div>
+                            </div>
+                        </li>
+                        <button class="reset w-[100px] h-[40px] border border-white rounded-xl text-white  flex justify-center items-center cursor-pointer">Reset</button>
+                    </ul>
+                </div> -->
+                <div class="w-full flex flex-wrap justify-center content-center">
+                    <span contenteditable="true" spellcheck="false" class="thermal w-full text-[150px] md:text-[250px] lg:text-[450px] leading-[200px]  lg:leading-[450px] font-bold font-thermal text-white  flex justify-center">Gauges</span>
+                    <button data-cont="thermal" class="btn btn1 w-full text-[10px] pl-10  lg:text-[15px] text-gray-400 text-start lg:pl-28  flex justify-start items-center">Explore RST Thermal <div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center ml-4 bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500">Buying Options</div></button>
+                    <img class="absolute top-[20%] right-[30%] w-[130px]" src="img/Artboard-1-at-2x-65524dcd03b48.png" alt="">
+                </div>
+            </section>
+            <!-- 5th sec -->
+            <section id="fifth" class="bg-black w-full  flex flex-wrap justify-center content-center mt-[200px] lg:mt-[400px]">
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:mr-36 ">
+                    <img src="img/3.gif" alt="">
+                    <button class="btn w-full text-[15px] text-gray-400 text-start flex flex-wrap justify-start content-center mt-5">ORO Magazine<span class="text-[10px] text-gray-400  flex justify-start w-full ">Using RST Thundra & RST Reactor</span></button>
+                </div>
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:ml-36 mt-10 lg:-rotate-[5deg]">
+                    <img src="img/4.png" alt="">
+                    <button data-cont="thermal" class="btn btn1 w-full text-[15px] text-gray-400 text-start  mt-5">RST Thermal <span class="text-[10px] text-gray-400 ml-20">48 Styles(Weight & Optic) + Italics</span><div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500 mt-4">Buying Options</div></button>
+                </div>
+            </section>
+            <!-- sixth sec -->
+            <section id="sixth" class="bg-black w-full flex justify-center content-center flex-wrap mt-[200px] relative">
+
+                <div class="w-full flex flex-wrap justify-center content-center">
+                    <span contenteditable="true" spellcheck="false" class="thermal w-full text-[70px] md:text-[120px] lg:text-[220px] leading-[200px]  lg:leading-[450px] font-bold font-silvetre text-white  flex justify-center">REMOVABLE</span>
+                    <button data-cont="silvestre" class="btn btn1 w-full text-[10px] pl-10  lg:text-[15px] text-gray-400 text-start lg:pl-28  flex justify-start items-center">Explore RST Silvestre<div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center ml-4 bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500">Buying Options</div></button>
+
+                    <img class="absolute top-[20%] right-[30%] w-[70px] lg:w-[130px]" src="img/Artboard-1-copy-2-at-2x-65524dc04ff96.png" alt="">
+                </div>
+            </section>
+            <!-- seventh sec -->
+            <section id="seventh" class="bg-black w-full  flex flex-wrap justify-center content-center mt-[200px] lg:mt-[400px] ">
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:mr-36 lg:-rotate-[5deg]">
+                    <img src="img/5.png" alt="">
+                    <button data-cont="mazumba" class="btn btn1 w-full text-[15px] text-gray-400 text-start  mt-5">RST Mazumba <span class="text-[10px] text-gray-400 ml-20">Early Access Font</span><div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500 mt-4">Buying Options</div></button>
+
+                </div>
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:ml-36 mt-10 ">
+                    <img src="img/6.gif" alt="">
+                    <button class="btn w-full text-[15px] text-gray-400 text-start flex flex-wrap justify-start content-center mt-5">Custom Type<span class="text-[10px] text-gray-400  flex justify-start w-full ">Whip.Team Building Exercise</span></button>
+                </div>
+            </section>
+            <!-- eigth sec -->
+            <section id="eigth" class="bg-black w-full flex justify-center content-center flex-wrap mt-[200px] relative">
+               
+                <div class="w-full flex flex-wrap justify-center content-center">
+                    <span contenteditable="true" spellcheck="false" class="thermal w-full text-[70px] md:text-[120px] lg:text-[220px] leading-[200px]  lg:leading-[450px] font-bold font-mazumba text-white  flex justify-center">Clockmaking</span>
+                    <button data-cont="mazumba" class="btn btn1 w-full text-[10px] pl-10  lg:text-[15px] text-gray-400 text-start lg:pl-28  flex justify-start items-center">Explore RST Mazumba <div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center ml-4 bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500">Buying Options</div></button>
+
+                    <img class="absolute top-[20%] left-[10%] w-[70px] lg:w-[130px]" src="img/mazumba-sticker-6547d10e748fb.png" alt="">
+                </div>
+            </section>
+            <!-- nineth sec -->
+            <section id="nineth" class="bg-black w-full  flex flex-wrap justify-center content-center mt-[100px] lg:mt-[300px] ">
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:mr-36 lg:rotate-[5deg]">
+                    <img src="img/7.gif" alt="" >
+                    <button class="btn w-full text-[15px] text-gray-400 text-start flex flex-wrap justify-start content-center mt-5">Custom Type<span class="text-[10px] text-gray-400  flex justify-start w-full ">Logo Designed For Washowski Music Band </span></button>
+                </div>
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:ml-36 mt-10 ">
+                    <img src="img/8.png" alt="">
+                    <button data-cont="libertad" class="btn btn1 w-full text-[15px] text-gray-400 text-start  mt-5">RST Libertad <span class="text-[10px] text-gray-400 ml-20">16 Styles(Weight) + Italics</span><div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500 mt-4">Buying Options</div></button>
+
+                </div>
+            </section>
+            <!-- tenth sec -->
+            <section id="tenth" class="bg-black w-full flex justify-center content-center flex-wrap mt-[200px] relative">
+                <div class="w-full flex flex-wrap justify-center content-center">
+                    <span contenteditable="true" spellcheck="false" class="thermal w-full text-[60px] md:text-[100px] lg:text-[180px] leading-[200px]  lg:leading-[450px] font-bold font-brother text-white  flex justify-center">Відбраження</span>
+                    <button data-cont="brother" class="btn btn1 w-full text-[10px] pl-10  lg:text-[15px] text-gray-400 text-start lg:pl-28  flex justify-start items-center">Explore RST Brother <div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center ml-4 bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500">Buying Options</div></button>
+
+                    <img class="absolute top-[30%] right-[30%] w-[70px] lg:w-[130px]" src="img/Artboard-1-copy-3-at-2x-655258afdf785.png" alt="">
+                </div>
+            </section>
+            <!-- eleventh sec -->
+            <section id="eleventh" class="bg-black w-full  flex flex-wrap justify-center content-center mt-[200px] lg:mt-[400px] ">
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:mr-36 ">
+                    <img src="img/9.png" alt="">
+                    <button data-cont="silvestre" class="btn btn1 w-full text-[15px] text-gray-400 text-start flex flex-wrap justify-start content-center mt-5">RST Silvestre<span class="text-[10px] text-gray-400  flex justify-start w-full ">Early Access Font</span></button>
+                </div>
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:ml-36 mt-10 lg:-rotate-[5deg]">
+                    <img src="img/10.png" alt="">
+                    <button class="btn w-full text-[15px] text-gray-400 text-start flex flex-wrap justify-start content-center mt-5 ml-20">Custom Type<span class="text-[10px] text-gray-400  flex justify-start w-full ">Curve Club Logo For Wilidish7Co.</span></button>
+                </div>
+            </section>
+            <!-- tweleve sec -->
+            <section id="twelveth" class="bg-black w-full flex justify-center content-center flex-wrap mt-[200px] relative">
+
+                <div class="w-full flex flex-wrap justify-center content-center">
+                    <span contenteditable="true" spellcheck="false" class="thermal w-full text-[100px] md:text-[200px] lg:text-[300px] leading-[200px]  lg:leading-[450px] font-bold font-libertad text-white  flex justify-center">Magnifiers</span>
+                    <button data-cont="libertad" class="btn btn1 w-full text-[10px] pl-10  lg:text-[15px] text-gray-400 text-start lg:pl-28  flex justify-start items-center">Explore RST Libertad <div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center ml-4 bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500">Buying Options</div></button>
+
+                    <img class="absolute top-[10%] right-[30%] w-[70px] lg:w-[130px]" src="img/Artboard-1-copy-4-at-2x-655258bb01c25.png" alt="">
+                </div>
+            </section>
+            <!-- thirteenth sec -->
+            <section id="thirteenth" class="bg-black w-full  flex flex-wrap justify-center content-center mt-[100px] lg:mt-[300px] ">
+                <div class="w-[90%] lg:w-[40%] flex flex-wrap justify-start content-center lg:mr-36 ">
+                    <img src="img/11.png" alt="">
+                    <button data-cont="mazumba" class="btn btn1 w-full text-[15px] text-gray-400 text-start  mt-5">RST Mazumba <span class="text-[10px] text-gray-400 ml-20">Mate,Our Favourite Local Drink</span><div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500 mt-4">Buying Options</div></button>
+
+                </div>
+                <div class="w-[90%] lg:w-[30%] flex flex-wrap justify-start content-center lg:ml-36 mt-10 ">
+                    <img src="img/12.png" alt="">
+                    <button data-cont="trasandina" class="btn btn1 w-full text-[15px] text-gray-400 text-start  mt-5">RST Trasandina <span class="text-[10px] text-gray-400 ml-20">18 Styles(Weight) + Italics</span><div class="w-[200px] h-[40px] rounded-md text-[15px] text-black flex justify-center items-center bg-[#eca713] hover:bg-[#eca713c3] transition-all duration-500 mt-4">Buying Options</div></button>
+
+                </div>
+            </section>
+            <!-- footer -->
+            <footer id="footer" class="bg-black w-full flex flex-wrap justify-center content-start mt-[200px] p-20">
+                <div class="w-full flex flex-wrap justify-start content-center ">
+                    <span class="w-full flex justify-start  text-white text-[30px] font-extrabold">Subscribe to our newsletter</span>
+                    <div class="w-full flex justify-start items-center my-6"><input class="w-[600px] bg-transparent text-white  h-[50px] border-b-2 border-white" type="email" placeholder="E-mail"></div>
+                    <div class="w-full flex justify-start items-center"><button class="w-[100px] h-[40px] bg-white text-[20px] text-black rounded-xl">Send</button></div>
+                </div>
+                <div class="w-full flex flex-wrap justify-start  content-center mt-20 ">
+                    <div class="w-full lg:w-[30%] flex flex-wrap justify-start content-start ">
+                        <span class="w-full text-white flex justify-start text-[25px] font-extrabold">RESET TYPE STUDIO</span>
+                        <span class="w-full text-white text-[15px] text-start justify-start items-center my-6">©2023, All Rights Reserved.</span>
+                        <p class="w-full text-white text-[15px] text-start justify-start items-center">info@reset-type.com
+                            San Jose 967 - Local 10
+                            Montevideo, 11100, UY
+                            Instagram - Twitter</p>
+                    </div>
+                    <div class="w-full lg:w-[30%] flex flex-wrap justify-start content-start lg:mx-6  mt-10 lg:mt-0 ">
+                        <span class="w-full text-white flex justify-start text-[25px]">SITE MAP</span>
+                        <ul class="w-full flex flex-wrap justify-start content-start my-4 ">
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px] mt-6">Home</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">Typefaces</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">Early Access</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">Journal</li>
+                        </ul>
+                        <ul class="w-full flex flex-wrap justify-start content-start my-4">
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">About</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">Services</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">Licenses</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">FAQ</li>
+                        </ul>
+                        <ul class="w-full flex flex-wrap justify-start content-start my-4">
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">Terms & Privacy</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">Colophon</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">Contact Us</li>
+                        </ul>
+                    </div>
+                    <div class="w-full lg:w-[30%] flex flex-wrap justify-start content-start ">
+                        <span class="w-full text-white flex justify-start text-[25px] font-extrabold">TYPEFACES</span>
+                        <ul class="w-full flex flex-wrap justify-start content-start my-4">
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px] mt-6">RST Reactor</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">RST Thermal</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">RST Brother</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">RST Trasandina</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">RST Libertad</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">RST Mazumbá (EA)</li>
+                            <li class="w-full text-white text-[15px] text-start justify-start items-center h-[30px]">RST Silvestre (EA)</li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </main>
+    <script>
+
+        const words =['ResetTypeStudio', 'Welcome', 'Dobrodošli', 'Willkommen', 'Huānyíng', 'Bienvenidos', 'Eguahé Porá', 'Bienvenue', 'Üdvözlet', 'Benvinguts', 'Witajcie', 'Sveiki Atvykę','Benènnidu', 'Hoş Geldiniz', 'Vítejte','Laipni Lūdzam', 'Bem-vindo',' Bine Aţi Venit', 'Éékouabô']
+        let logo = document.getElementById('logo')
+        let header = document.getElementById('header')
+        let dropdownmenu = document.getElementById('dropdownmenu')
+        let list_btn = document.getElementById('list_btn')
+        let _as = document.querySelectorAll('#dropdownmenu a')
+        let firstletter = document.getElementById('firstletter')
+        let txt = document.getElementById('txt')
+        let cookie = document.getElementById('cookie')
+        let mn = document.getElementById('_main')
+        let whole = document.getElementById('whole') 
+        let all_sections = document.querySelectorAll('#whole>section')
+        let footer = document.getElementById('footer')
+        let close_card_btn = document.getElementById('close_card_btn')
+        let open_card_btn = document.getElementById('open_card_btn')
+        let wholeprice = document.getElementById('wholeprice')
+        let card = document.getElementById('card')
+        let buying_options = document.getElementById('buying_options')
+        let buying_options_ul = document.getElementById('buying_options_ul')
+        let add_to_card_btn = document.getElementById('add_to_card_btn')
+        let close_buying_options_btn = document.getElementById('close_buying_options_btn')
+        let family = document.getElementById('family')
+        let all_sell_box = document.getElementById('all_sell_box')
+        let sizes = document.querySelectorAll('.size')
+        let fill_sizes = document.querySelectorAll('.fill_size')
+   
+        console.log(sizes);
+        const btns_for_fonts = document.querySelectorAll('.btn1')
+        const boxs = document.querySelectorAll('.box')
+        const lis_in_buying_options_ul = document.querySelectorAll('#buying_options_ul li')
+
+        let st_old = 0
+        let st = 0
+        let turn_btn = 1
+        let h = 0
+        let res = []
+        let card_array = []
+        let shoplist = []
+        let buyingoptions = []
+        let status = 'writing'
+        let i = 0
+        let t = 1
+        let _name =''
+        let turn_list = 1
+
+        // ***************api****************
+
+        async function getdata(){
+            let response = await fetch("https://6595591004335332df8287f5.mockapi.io/fonts")
+            res = await response.json()
+        }
+        getdata()
+
+        // ***************end api****************
+       
+        setInterval(() => {
+            logo.classList.toggle('br')
+        }, 500);
+
+        mn.addEventListener('scroll',(e)=>{
+            st = Math.floor(e.target.scrollTop) 
+            if(st_old>=st || st==0){
+                header.style.top = 0
+            }
+            else if(st>st_old ){
+                header.style.top = '-400px'
+            }
+            st_old = st
+            cookie.style.transform = 'rotate('+st/20+'deg)'
+        })
+
+        open_card_btn.addEventListener('click',()=>{
+            wholeprice.innerHTML = ''
+            let phi = 0
+            let  p = []
+            card.style.right = '0'
+            while(all_sell_box.firstChild) all_sell_box.removeChild(all_sell_box.lastChild);
+            if(card_array.length==0){
+                all_sell_box.innerHTML = 'your card is empty...'
+            }
+            else{
+                all_sell_box.innerHTML = ''
+                card_array.forEach((vall)=>{
+                    let _lii = document.createElement('li')
+                    _lii.innerHTML = `
+                        <div onclick="remove_li_from_card(event)" class="box2 mr-2 lg:mr-3 bg-black"></div>
+                        <span class="w-[30%] text-[12px] lg:text-[15px] text-black text-start mr-2 lg:mr-2">${vall.family}</span>
+                        <span class="w-[50%] text-[12px] lg:text-[15px] text-black text-start mr-2 lg:mr-2">${vall.type}</span>
+                        <span class="w-[5%] text-[12px] lg:text-[15px] text-black text-start">${vall.price}</span>
+                    `
+                    _lii.classList.add('li_in_buying_options_and_card')
+                    all_sell_box.appendChild(_lii)
+                    let pp = (vall.price).slice(0,(((vall.price).length)-1))
+                    p.push(pp)
+                })
+                p.forEach((item)=>{
+                    phi += Number(item) 
+                })
+                wholeprice.innerHTML = phi + '$'
+            }
+        })
+
+        close_card_btn.addEventListener('click',()=>{
+            card.style.right = '-1200px'
+        })
+
+        list_btn.addEventListener('click',(e)=>{
+           if(turn_list % 2){
+                dropdownmenu.style.transform = 'translateY(0px)'
+           }else{
+                dropdownmenu.style.transform = 'translateY(-800px)'
+           }
+           turn_list++
+        })
+
+        _as.forEach((val)=>{
+            val.addEventListener('mouseenter',()=>{
+                firstletter.innerHTML = val.innerHTML[0]
+            })
+        })
+        _as
+        .forEach((val)=>{
+            val.addEventListener('mouseout',()=>{
+                firstletter.innerHTML = ''
+            })
+        })
+  
+        function _turn(){
+            if(i<=((words.length)-1)){
+                _name = words[i]
+                if(i == ((words.length)-1)){
+                    i = 0
+                }
+                else{
+                    i++
+                }
+            }
+        }
+        _turn()
+
+        setInterval(() => {
+            txt.classList.toggle('br')
+                if(status=='writing'){
+                    if((t<=(_name.length))){
+                        txt.innerHTML = _name.slice(0,t)
+                        if(t == ((_name.length))){
+                            status ='cleaning'
+                        }
+                        else{
+                            t++
+                        }
+                    }
+                }
+                else{
+                    if(t>=0){
+                        txt.innerHTML = _name.slice(0,t)
+                        if(t==0){
+                            status ='writing'
+                            t = 1
+                            _turn()
+                        }
+                        else{
+                            t--
+                        }
+                    }
+                }
+            }, 150);
+
+            btns_for_fonts.forEach((val)=>{
+                val.addEventListener('click',(e)=>{
+                    e.stopImmediatePropagation()
+                   buyingoptions=[]
+                    buying_options.style.right = 0
+                    family.innerHTML = val.getAttribute("data-cont")
+                    while(buying_options_ul.firstChild) buying_options_ul.removeChild(buying_options_ul.lastChild);
+                    res.map((vall)=>{
+                       if(vall.family == val.getAttribute('data-cont')){
+                            let _li = document.createElement('li')
+                            
+                            _li.innerHTML = `
+                            <div  onclick="add_li_to_shoplist(event,${vall.id})" class="box"></div>
+                            <span  class="type text-[12px] lg:text-[15px] text-black text-start mx-1 lg:mx-4 w-[70%]">${vall.type}</span>
+                            <span class="price text-[12px] lg:text-[15px] text-black text-end w-[5%]">${vall.price}</span>
+                            `
+                            _li.setAttribute('data-state','off')
+                            _li.classList.add('li_in_buying_options_and_card')
+                            buyingoptions.push(_li)
+                            buying_options_ul.appendChild(_li)
+                       }
+                    })
+                   
+                    card_array.forEach((vv)=>{
+                        if(vv.family==val.getAttribute("data-cont")){
+                            buyingoptions.forEach((vvv)=>{
+                                let childs = vvv.children
+                                if(childs[1].innerHTML == vv.type){
+                                    childs[0].style.backgroundColor = 'black'
+                                    vvv.setAttribute('data-state','on')
+                                }
+                            })
+                        }
+                    })
+                })
+            })
+
+            add_to_card_btn.addEventListener('click',(e)=>{
+                card_array = []
+                shoplist.forEach((val)=>{
+                    card_array.push(val)
+                })
+                buying_options.style.right = '-1200px'
+                if(card_array.length==0){
+                    open_card_btn.innerHTML = `card(0)`
+                }else{
+                    open_card_btn.innerHTML = `card(${card_array.length})`
+                }
+            })
+
+            close_buying_options_btn.addEventListener('click',()=>{
+                buying_options.style.right = '-1200px'
+            })
+
+            function add_li_to_shoplist(e,ind){
+                console.log(ind);
+                if(e.target.parentElement.getAttribute('data-state')=='off'){
+                    e.target.style.backgroundColor = 'black'
+                    e.target.parentElement.setAttribute('data-state' ,'on')
+                    shoplist.push(res[ind-1])
+                }
+                else{
+                    e.target.style.backgroundColor = 'white'
+                    e.target.parentElement.setAttribute('data-state' ,'off')
+                    shoplist.forEach((val,i)=>{
+                        if(res[ind-1].id == val.id){
+                            shoplist.splice(i,i+1)
+                        }
+                    })
+                }
+                console.log(shoplist);
+            }
+
+            function remove_li_from_card(e){
+                e.target.style.backgroundColor='white'
+                card_array.forEach((val,i)=>{
+                    if((val.family == e.target.nextElementSibling.innerHTML) && (val.type== e.target.nextElementSibling.nextElementSibling.innerHTML)){
+                        card_array.splice(i,1)
+                        shoplist.splice(i,1)
+                    }
+                    if(card_array.length==0){
+                        open_card_btn.innerHTML = `card(0)`
+                    }else{
+                        open_card_btn.innerHTML = `card(${card_array.length})`
+                    }
+                })
+                open_card_btn.click()
+            }
+
+            window.addEventListener('click',()=>{
+                card.style.right = '-1200px'
+                buying_options.style.right = '-1200px'
+            })
+
+            card.addEventListener('click',(e)=>{
+                e.stopImmediatePropagation()
+            })
+
+            buying_options.addEventListener('click',(e)=>{
+                e.stopImmediatePropagation()
+            })
+
+            header.addEventListener('click',(e)=>{
+                e.stopImmediatePropagation()
+            })
+            
+    </script>
+</body>
+</html>

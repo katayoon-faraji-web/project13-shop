@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: font1;
+    src: url("../font/reactor_sans/Reactor-Sans.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: font2;
+    src: url("../font/reactor") format("opentype");
+}
+@font-face {
+    font-family: font3;
+    src: url("../font/thrmal") format("opentype");
+}
+@font-face {
+    font-family: font4;
+    src: url("../font/silvestre") format("opentype");
+}
+@font-face {
+    font-family: font5;
+    src: url("../font/mazumba") format("opentype");
+}
+@font-face {
+    font-family: font6;
+    src: url("../font/brother") format("opentype");
+}
+@font-face {
+    font-family: font7;
+    src: url("../font/libertad") format("opentype");
+}
