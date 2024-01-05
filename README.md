@@ -1,5 +1,5 @@
 # project13-shop
-- [Demo Project](https://katayoon-faraji-web.github.io/project12-musicPlayer/)
+- [Demo Project](https://katayoon-faraji-web.github.io/project13-shop/)
 
 - Developed by katayoon faraji
 
