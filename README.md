@@ -7,7 +7,7 @@
 
 - 🗓️Created - 2024-01-04
 
-- 💻Technologies Used - Html , Css , Sass , Animation , Tailwind , Javascript
+- 💻Technologies Used - Html , Css , Sass , Animation , API , Tailwind , Javascript
 
 - Responsive
   
